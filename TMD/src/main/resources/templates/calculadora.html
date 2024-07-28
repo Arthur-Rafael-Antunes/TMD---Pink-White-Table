@@ -4,163 +4,148 @@
     <title>Calculadora</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            background-size: cover;
-            background-repeat: no-repeat;
-            transition: background-image 0.5s;
+             margin: 0;
+             padding: 0;
+             background-size: cover;
+             background-repeat: no-repeat;
+             transition: background-image 0.5s;
+             background-image: url("{{ url_for('static', filename='background.jpg') }}");
         }
 
-        .green-mode {
-            background-image: url("/static/images/fundo_rosa.jpg");
-        }
+         #theme-toggle {
+             position: absolute;
+             top: 20px;
+             right: 20px;
+             cursor: pointer;
+         }
 
-        .purple-mode {
-            background-image: url("/static/images/fundo_verde.jpg");
-        }
+         * {
+             margin: 0;
+             font-family: Arial, Helvetica, sans-serif;
+             font-weight: 600;
+         }
 
-        .blue-mode {
-            background-image: url("/static/images/fundo_roxo.jpg");
-        }
+         td {
+             width: 4vw;
+             border: 1px solid black; /* Corrija o estilo da borda */
+             text-align: center;
+         }
 
-        .orange-mode {
-            background-image: url("/static/images/fundo_laranja.jpg");
-        }
+         .headingOne {
+             background-color: rgb(255, 255, 255);
+             padding: 5px;
+             font-size: 5vw;
+         }
 
-        #theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-        }
+         ._color_1 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #e6b629;
+         }
 
-        * {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 600;
-        }
+         .color_2 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #2b6464;
+         }
 
-        td {
-            width: 4vw;
-            border: 1px solid black; /* Corrija o estilo da borda */
-            text-align: center;
-        }
+         .color_3 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #90c7ff;
+         }
 
-        .headingOne {
-            background-color: rgb(255, 255, 255);
-            padding: 5px;
-            font-size: 5vw;
-        }
+         .color_4 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #fceff0;
+         }
 
-        ._color_1 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #e6b629;
-        }
+         .color_5 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #fff28e;
+         }
 
-        .color_2 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #2b6464;
-        }
+         .color_6 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #c79810;
+         }
 
-        .color_3 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #90c7ff;
-        }
+         .color_7 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #cdeb8b;
+         }
 
-        .color_4 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #fceff0;
-        }
+         .color_8 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #ebdca9;
+         }
 
-        .color_5 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #fff28e;
-        }
+         .color_9 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #e6e6fa;
+         }
 
-        .color_6 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #c79810;
-        }
+         .text_color_green {
+             color: green;
+         }
+         .noBorder
+         {
+             border: 0px;
+         }
+         img{
+             width: 100px;
+             height: auto;
+             padding: 525px 0px 0px 0px;
+         }
+         button{
+             border:transparent;
+             background-color:transparent;
+             width:50px;
+         }
+         .buttons {
+             margin-left: 20px;
+         }
+         .button1{
+             margin-right: 20px;
+             border: 10px;
+             background-color: gray;
+         }
+         .header{
+             display: flex;
+             align-items: center;
+         }
+         .title{
+             font-size: 5vw;
+         }
+         .font
+         {
+             font-size: 1px;
+         }
+         .popup {
+             display: none;
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.7);
+         }
 
-        .color_7 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #cdeb8b;
-        }
+         .popup-content {
+             background-color: #fefefe;
+             margin: 15% auto;
+             padding: 20px;
+             border: 1px solid #888;
+             width: 70%;
+             max-width: 400px;
+             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+             position: relative;
+         }
 
-        .color_8 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #ebdca9;
-        }
-
-        .color_9 {
-            border: 1px solid black; /* Corrija o estilo da borda */
-            background-color: #e6e6fa;
-        }
-
-        .text_color_green {
-            color: green;
-        }
-        .noBorder
-        {
-            border: 0px;
-        }
-        img{
-            width: 100px;
-            height: auto;
-            padding: 525px 0px 0px 0px;
-        }
-        button{
-            border:transparent;
-            background-color:transparent;
-            width:50px;
-        }
-        .buttons {
-            margin-left: 20px;
-        }
-        .button1{
-            margin-right: 20px;
-            border: 10px;
-            background-color: gray;
-        }
-        .header{
-            display: flex;
-            align-items: center;
-        }
-        .title{
-            font-size: 5vw;
-        }
-        .font
-        {
-            font-size: 1px;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-
-        .popup-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 70%;
-            max-width: 400px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+         .close {
+             color: #aaa;
+             float: right;
+             font-size: 28px;
+             font-weight: bold;
+             cursor: pointer;
+         }
     </style>
 </head>
 <body class="purple-mode">
@@ -178,8 +163,12 @@
                         Calculadora
                     </a>
                 </button>
+                <button class="button1">
+                    <a href="/pesquisa">
+                        Pesquisa
+                    </a>
+                </button>
                 <button class="button1">Modos</button>
-                <button class="button1">Pesquisa</button>
             </div>
         </div>
         <button id="infoButton">(INFO)</button>
@@ -193,30 +182,75 @@
             </div>
         </div>
         <form method="POST">
-            <div id="modoLigacaoQuimica" style="display: none;">
-                <input type="text" name="ligacaoQuimica" class="barra" placeholder="Ligação Química">
-                <br> <br>
-            </div>
             <div id="modoOutros">
-                <input type="text" name="numero1"  class="barra" placeholder="Reagentes">
-                <br> <br>
-                <input type="text" name="numero2"  class="barra" placeholder="Produtos">
-                <br> <br>
+                <input type="text" name="numero1" class="barra" placeholder="Reagentes" required>
+                <br><br>
+                <input type="text" name="numero2" class="barra" placeholder="Produtos" required>
+                <br><br>
             </div>
-            <select name="operacao" id="modoCalculo">
-                <option value="balanciamento"> Balanceamento</option>
+            <select name="operacao" id="modoCalculo" required>
+                <option value="balanciamento">Balanceamento</option>
                 <option value="ligacao">Ligação Química</option>
-                <option value="multiplicacao">Multiplicação</option>
-                <option value="divisao">Divisão</option>
+                <option value="multiplicacao">Estequiometria</option>
+                <option value="divisao">Pureza</option>
             </select>
             <input type="submit" value="Calcular">
         </form>
-    <h2>Resultado:</h2>
-    {% if mensagem_erro %}
-    <div style="color: red;">Erro: {{ mensagem_erro }}</div>
-    {% elif resultado %}
-        {{ resultado }}
-    {% endif %}
+
+        <script>
+            var modoCalculo = document.getElementById('modoCalculo');
+            var modoLigacaoQuimica = document.getElementById('modoLigacaoQuimica');
+            var modoOutros = document.getElementById('modoOutros');
+
+            modoCalculo.addEventListener('change', function() {
+                var modoSelecionado = modoCalculo.options[modoCalculo.selectedIndex].value;
+
+                // Ocultar ou mostrar os campos de entrada com base na opção selecionada
+                if (modoSelecionado === "ligacao") {
+                    modoLigacaoQuimica.style.display = "block";
+                    modoOutros.style.display = "none";
+                } else {
+                    modoLigacaoQuimica.style.display = "none";
+                    modoOutros.style.display = "block";
+                }
+            });
+
+            var campoAtivo = null;
+
+            function adicionarElemento(elemento) {
+                var barras = document.getElementsByClassName('barra');
+                for (var i = 0; i < barras.length; i++) {
+                    if (barras[i] === campoAtivo) {
+                        barras[i].value += elemento;
+                    }
+                }
+            }
+
+            var barras = document.getElementsByClassName('barra');
+            for (var i = 0; i < barras.length; i++) {
+                barras[i].addEventListener('focus', function () {
+                    campoAtivo = this;
+                });
+            }
+
+            var infoButton = document.getElementById('infoButton');
+            var infoPopup = document.getElementById('infoPopup');
+            var closeButton = document.getElementById('closeButton');
+
+            infoButton.addEventListener('click', function() {
+                infoPopup.style.display = 'block';
+            });
+
+            closeButton.addEventListener('click', function() {
+                infoPopup.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == infoPopup) {
+                    infoPopup.style.display = 'none';
+                }
+            });
+        </script>
     
     <br><br>
     <table>
@@ -486,7 +520,24 @@
             <td class="color_5 text_color_red">
                 <button onclick="adicionarElemento('Cn')"> 112<br/>Cn </button>
             </td>
-            
+            <td class="color_7"><br>
+                <button onclick="adicionarElemento('Nh')"> 113<br/>Nh </button>
+            </td>
+            <td class="color_7"><br>
+                <button onclick="adicionarElemento('Fl')"> 114<br/>Fl </button>
+            </td>
+            <td class="color_7"><br>
+                <button onclick="adicionarElemento('Mc')"> 115<br/>Mc </button>
+            </td>
+            <td class="color_7"><br>
+                <button onclick="adicionarElemento('Lv')"> 116<br/>Lv </button>
+            </td>
+            <td class="color_8"><br>
+                <button onclick="adicionarElemento('Ts')"> 117<br/>Ts </button>
+            </td>
+            <td class="color_9"><br>
+                <button onclick="adicionarElemento('Og')"> 118<br/>Og </button>
+            </td>
         </tr>
         <tr>
             <td class="noBorder"></td>

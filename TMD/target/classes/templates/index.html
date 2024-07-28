@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <title>The Periodic Table</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Pink White Table</title>
     <style>
         body {
             margin: 0;
@@ -13,24 +13,10 @@
             background-size: cover;
             background-repeat: no-repeat;
             transition: background-image 0.5s;
-        }
-        
-        .green-mode {
-            background-image: url("/static/images/fundo_rosa.jpg");
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+             background-size: cover; /* Optional: to cover the entire background */
         }
 
-        .purple-mode {
-            background-image: url("/static/images/fundo_verde.jpg");
-        }
-
-        .blue-mode {
-            background-image: url("/static/images/fundo_roxo.jpg");
-        }
-
-        .orange-mode {
-            background-image: url("/static/images/fundo_laranja.jpg");
-        }
-		
         #theme-toggle {
             position: absolute;
             top: 20px;
@@ -139,7 +125,7 @@
     </style>
 </head>
 
-<body class="purple-mode">
+<body>
         <div class="header">
         <h1 class="title">The Periodic table</h1>
         <div class="buttons">
@@ -149,10 +135,13 @@
                     Calculadora
                 </a>
             </button>
-            <button class="button">Modos</button>
-            <button class="button">Pesquisa</button>
+            <button class="button">
+                <a href="/pesquisa">
+                    Pesquisa
+                </a></button>
+
+            <button class="button">Donwload</button>
         </div>
-        <img src="botao.png" width="" height="" id=theme-toggle>
     </div>
 
         <center>
@@ -164,7 +153,7 @@
             </tr>
             <tr border="on">
                 <td class="color_2">3<br>Li<br><h6>Lítio<h6></td>
-                <td class="color_3">4<br>Be<br><h6>Berílio</h6></td>
+                <td class="co'lor_3">4<br>Be<br><h6>Berílio</h6></td>
 
                 <td class="noBorder" colspan="10"></td>
 
@@ -308,32 +297,6 @@
                 <td class="color_4">103<br>Lr<br><h6>Laurêncio</h6></td>
                 
         </table>
-    </center>
-
-   <!-- <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const modes = ['purple-mode', 'green-mode', 'blue-mode', 'orange-mode'];
-        let currentModeIndex = 0;
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.remove(modes[currentModeIndex]);
-            currentModeIndex = (currentModeIndex + 1) % modes.length;
-            body.classList.add(modes[currentModeIndex]);
-
-            const imageSources = ['botao.png', 'jesse.png', 'guz.png', 'saul.png'];
-            themeToggle.src = imageSources[currentModeIndex];
-        });
-        </script>
-    </tr>
-    {% for elemento in elementos %}
-    <tr>
-        <td>{{ elemento.elemento_geral.nome }}</td>
-        <td>{{ elemento.elemento_propriedades.numero_atomico }}</td>
-        Adicione mais colunas conforme necessário 
-    </tr>
-    {% endfor %} -->
-    </table>
     </center>
     </body>
 
