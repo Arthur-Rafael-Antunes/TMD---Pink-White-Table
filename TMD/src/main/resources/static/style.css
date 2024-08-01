@@ -3,6 +3,7 @@ body{
     background-size: cover; /* Adjust as needed */
     background-repeat: no-repeat; /* Adjust as needed */
     background-position: center;
+    height:100vh;
     font-style: italic;
     
 }
